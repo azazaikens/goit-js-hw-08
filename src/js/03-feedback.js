@@ -8,21 +8,13 @@ const userMessage = feedback.children[1].firstElementChild;
 const feedbackKey = 'feedback-form-state';
 let userCommit = {};
 
-userEmail.addEventListener('input', throttle(() => {
+feedback.addEventListener('input', throttle(() => {
     userCommit = {
         email: userEmail.value,
         message: userMessage.value
     };
     storage.save(feedbackKey, userCommit);
 }, 500));
-userMessage.addEventListener('input', throttle(() => {
-    userCommit = {
-      email: userEmail.value,
-      message: userMessage.value,
-    };
-    storage.save(feedbackKey, userCommit);
-  }, 500)
-);
 
 feedback.addEventListener('submit', event => {
     event.preventDefault()
